@@ -1,0 +1,62 @@
+---
+Language: Cpp
+Standard: c++17
+
+# ====================== 行宽不超过 120 ======================
+ColumnLimit: 120
+
+# ====================== 空格缩进 ======================
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# ====================== &/* 跟随变量名 ======================
+PointerAlignment: Right
+ReferenceAlignment: Right
+
+# ====================== if/for/while语句必须加大括号 ======================
+InsertBraces: true
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: false
+
+# ====================== 表达式换行保持一致性，运算符放行末 ======================
+BreakBeforeBinaryOperators: None
+
+# ====================== 使用 K&R 缩进风格 ======================
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeElse: false
+  IndentBraces: false
+
+# ====================== 合理安排空行，保持代码紧凑 ======================
+MaxEmptyLinesToKeep: 1
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# ====================== 注释格式 ======================
+SpacesBeforeTrailingComments: 1  # 代码与注释之间 1 个空格
+
+# ###########################################################
+# 强制关闭所有额外自动行为（无隐藏规则）
+# ###########################################################
+SortIncludes: false                  # 关闭头文件排序
+FixNamespaceComments: false          # 不修改命名空间注释
+ReflowComments: false                # 不自动重排注释换行
+SortUsingDeclarations: false         # 不排序 using
+IndentPPDirectives: None             # 不缩进宏
+AlignAfterOpenBracket: DontAlign     # 不自动对齐括号
+AlignArrayOfStructures: None         # 不自动对齐结构体
+AlignConsecutiveAssignments: false   # 不自动对齐赋值
+AlignConsecutiveBitFields: false
+AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: false
+AlignEscapedNewlines: DontAlign
+AlignOperands: DontAlign
+AlignTrailingComments: false

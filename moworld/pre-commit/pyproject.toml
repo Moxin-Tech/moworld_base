@@ -1,0 +1,98 @@
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+format.quote-style = "preserve"
+
+[tool.ruff.lint]
+# 追加 D209，不会覆盖、不会屏蔽任何现有规则
+extend-select = [
+  "D209",  # 规则8：多行文档字符串末尾 """ 必须单独一行
+  "SIM115",    # 规则17：推荐用 with 代替 try-finally
+]
+
+# 业界标准 PYLINT 生产配置
+# 只开高价值规则，关闭所有洁癖规则
+# ================================
+[tool.pylint]
+reports = false
+score = false
+max-line-length = 120
+max-args = 15       # 放宽，不检查
+max-branches = 50   # 放宽，不检查
+max-statements = 200# 放宽，不检查
+max-locals = 50     # 放宽，不检查
+max-positional-arguments = 20  # 放宽，不检查
+
+# ================================
+# 只开启：真正会导致程序崩溃的错误（BUG 级别）
+# ================================
+enable = [
+  # 语法/运行时错误（必开）
+  "E0100",  # 语法错误
+  "E0601",  # 使用未定义变量
+  "E0602",  # 变量未定义
+  "E0603",  # 使用未定义属性
+  "E0611",  # 导入不存在的包
+  "E0632",  # 缺少返回值
+  "E1101",  # 访问不存在成员
+  "E1120",  # 不可调用对象被调用
+  "E0632",  # 缺少返回值
+
+  # 潜在崩溃警告（高价值）
+  "W0632",  # 元组解包不匹配（会崩）
+  "W1514",  # open 未指定 encoding（跨平台乱码）
+]
+
+# ================================
+# 关闭所有洁癖/格式/风格/复杂度警告
+# ================================
+disable = [
+  # 所有命名、文档、格式
+  "invalid-name",
+  "missing-docstring",
+  "missing-module-docstring",
+  "missing-function-docstring",
+  "missing-class-docstring",
+  "empty-docstring",
+  "line-too-long",
+  "trailing-whitespace",
+
+  # 所有复杂度检查（函数太长、分支太多、参数太多等）
+  "too-many-arguments",
+  "too-many-positional-arguments",
+  "too-many-branches",
+  "too-many-statements",
+  "too-many-locals",
+  "too-many-return-statements",
+  "too-many-instance-attributes",
+  "too-few-public-methods",
+  "too-many-public-methods",
+
+  # 所有未使用变量/参数警告
+  "unused-argument",
+  "unused-variable",
+  "unused-import",
+
+  # 所有保护成员访问警告
+  "protected-access",
+
+  # 所有风格优化建议
+  "no-else-raise",
+  "no-else-return",
+  "consider-using-enumerate",
+  "use-dict-literal",
+  "consider-using-f-string",
+  "superfluous-parens",
+  "unnecessary-pass",
+  "len-as-condition",
+  "global-statement",
+  "import-outside-toplevel",
+  "raise-missing-from",
+  "broad-except",
+  "bare-except",
+
+  # 导入相关
+  "wrong-import-order",
+  "wrong-import-position",
+  "import-error",
+]

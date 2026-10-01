@@ -1,0 +1,34 @@
+# Local task state
+codex_state
+task
+
+# Model weights and training checkpoints
+/checkpoints/
+/models/
+/weights/
+
+# Weight files placed outside the standard directories
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.distcp
+*.onnx
+*.mindir
+pytorch_model*.bin
+diffusion_pytorch_model*.bin
+
+# Generated inference media and Python caches
+realtime_outputs/
+bidirectional_outputs/
+outputs/
+__pycache__/
+*.py[cod]
+
+# Private MoWorld data, generated manifests, and local configuration
+/moworld/examples/moworld/local_data/
+/moworld/examples/moworld/sample_data/
+/moworld/examples/moworld/*.jsonl
+!/moworld/examples/moworld/*.example.jsonl
+# The archive ships this manifest as a single relative-path example.
+!/moworld/examples/moworld/data_feature.jsonl

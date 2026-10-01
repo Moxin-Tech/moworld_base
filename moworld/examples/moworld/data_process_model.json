@@ -1,0 +1,26 @@
+{
+    "task": "control-camera",
+    "ae": {
+        "model_id": "wan_video_vae",
+        "from_pretrained": "../models/diffusers/vae",
+        "dtype": "bf16",
+        "enable_tiling": true,
+        "tiling_param": {
+            "tile_size": [34, 34],
+            "tile_stride": [18, 16]
+        },
+        "norm_latents": true,
+        "norm_mode": "channel_specified_shift_scale",
+        "do_sample": false,
+        "i2v_processor": {
+            "processor_id": "wan_i2v_processor",
+            "i2v_vae_encode_tiling": "auto"
+        }
+    },
+    "text_encoder": {
+        "model_id": "UMT5",
+        "dtype": "bf16",
+        "hub_backend": "hf",
+        "from_pretrained": "../models/diffusers/text_encoder"
+    }
+}

@@ -1,0 +1,17 @@
+sharding_size: auto
+sub_modules_to_wrap:
+  - predictor.control_adapter
+  - predictor.blocks.{*}
+  - predictor.head
+reshard_after_forward: True
+param_dtype: "bf16"
+reduce_dtype: "fp32"
+ignored_modules:
+  - ae
+  - text_encoder
+cast_forward_inputs: True
+recompute_modules:
+  - predictor.blocks.{*}
+num_to_forward_prefetch: 0
+num_to_backward_prefetch: 0
+offload_to_cpu: False

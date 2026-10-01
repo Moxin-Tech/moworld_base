@@ -1,0 +1,57 @@
+minimum_pre_commit_version: 4.0.0
+exclude: ^sources|\.(md)$|^UserGuide
+
+default_stages: [pre-commit]
+ci:
+  autofix_prs: false
+  autoupdate_schedule: monthly
+
+repos:
+  # pre-commit 基础检查
+  - repo: https://gitcode.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+        args: ["--allow-multiple-documents"]
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-json
+
+  # -------------------------- Python 核心检查 --------------------------
+  # codespell
+  - repo: https://gitcode.com/gh_mirrors/co/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        args: [
+            "-L",
+            "CANN,cann,NNAL,nnal,ASCEND,ascend,EnQue,CopyIn,ArchType,AND,ND,tbe,copyin,alog,PTD,ptd",
+            "--skip",
+            "*.toml,*.py,*.cpp,*.hpp,*.c,*.h,*.txt",
+          ]
+
+  # Bandit：指定 pre-commit/pyproject.toml
+  - repo: https://gitcode.com/gh_mirrors/ba/bandit
+    rev: 1.9.4
+    hooks:
+      - id: bandit
+        name: bandit (Python 安全漏洞检查)
+        types: [python]
+        args: [
+          "--config=pre-commit/bandit.yaml",
+          "--quiet",
+        ]
+
+  #--------------- C++ 核心检查 ---------------------------------------------
+  - repo: https://gitcode.com/pre-commit-clang/mirrors-clang-format
+    rev: v18.1.8
+    hooks:
+      - id: clang-format
+        files: \.(c|h|cpp|hpp|cc|hh|cxx|hxx)$
+        args:
+          - "--style=file"  # 读取 .clang-format 文件
+          - "--verbose"
+          - "-i"

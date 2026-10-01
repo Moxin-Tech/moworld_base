@@ -1,0 +1,3 @@
+[submodule "MindSpeed"]
+	path = MindSpeed
+	url = https://gitcode.com/Ascend/MindSpeed.git

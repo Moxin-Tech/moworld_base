@@ -1,0 +1,61 @@
+{
+    "dataset_param": {
+        "dataset_type": "control-camera",
+        "basic_parameters": {
+            "data_path": "./examples/moworld/local_data/raw_metadata.jsonl",
+            "data_folder": "",
+            "data_storage_mode": "standard"
+        },
+        "preprocess_parameters": {
+            "video_processor_type": "OpensoraplanVideoProcessor",
+            "video_reader_type": "AvVideo",
+            "image_reader_type": "Image",
+            "num_frames": 125,
+            "min_num_frames": 1,
+            "frame_interval": 1,
+            "auto_interval": false,
+            "max_height": 480,
+            "max_width": 832,
+            "max_hxw": 399360,
+            "train_fps": 24,
+            "speed_factor": 1.0,
+            "drop_short_ratio": 0.0,
+            "cfg": 0.0,
+            "hw_stride": 8,
+            "force_resolution": false,
+            "hw_aspect_thr": 5.0,
+            "truncate_t_by_sp": false,
+            "train_pipeline": {
+                "video": [
+                    {"trans_type": "ResizeVideo", "param": {"transform_size": "auto", "interpolation_mode": "bilinear", "antialias": true, "mode": "shortside"}},
+                    {"trans_type": "ToTensorVideo"},
+                    {"trans_type": "norm_fun", "param": {"mean": 0.5, "std": 0.5}},
+                    {"trans_type": "CenterCropResizeVideo", "param": {"use_short_edge": false, "top_crop": false, "align_corners": false, "antialias": true, "transform_size": "auto"}}
+                ],
+                "first_frame_vae": [
+                    {"trans_type": "ResizeVideo", "param": {"transform_size": "auto", "mode": "resize", "interpolation_mode": "bilinear", "align_corners": false, "antialias": false}}
+                ]
+            }
+        },
+        "use_text_processer": true,
+        "enable_text_preprocessing": true,
+        "text_preprocess_methods": {"method": "whitespace_clean"},
+        "tokenizer_config": {
+            "autotokenizer_name": "AutoTokenizer",
+            "hub_backend": "hf",
+            "from_pretrained": "../models/base/google/umt5-xxl",
+            "model_max_length": 512
+        }
+    },
+    "dataloader_param": {
+        "dataloader_mode": "sampler",
+        "sampler_type": "LengthGroupedSampler",
+        "shuffle": false,
+        "drop_last": false,
+        "pin_memory": true,
+        "group_frame": false,
+        "group_resolution": false,
+        "group_data": false,
+        "initial_global_step_for_sampler": 0
+    }
+}

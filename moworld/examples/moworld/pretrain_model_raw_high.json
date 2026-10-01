@@ -1,0 +1,70 @@
+{
+    "load_video_features": false,
+    "load_text_features": false,
+    "task": "control-camera",
+    "diffusion": {
+        "model_id": "wan_flow_match_scheduler",
+        "num_train_timesteps": 1000,
+        "shift": 6,
+        "sigma_min": 0.0,
+        "extra_one_step": true,
+        "max_timestep_boundary": 1.0,
+        "min_timestep_boundary": 0.358
+    },
+    "predictor": {
+        "model_id": "wandit",
+        "dtype": "bf16",
+        "model_type": "wan2.2-control-camera",
+        "patch_size": [1, 2, 2],
+        "text_len": 512,
+        "in_dim": 36,
+        "hidden_size": 5120,
+        "ffn_dim": 13824,
+        "freq_dim": 256,
+        "text_dim": 4096,
+        "img_dim": 1280,
+        "out_dim": 16,
+        "num_heads": 40,
+        "num_layers": 1,
+        "pipeline_num_layers": [10,10,10,10],
+        "qk_norm": true,
+        "qk_norm_type": "rmsnorm",
+        "cross_attn_norm": true,
+        "eps": 1e-6,
+        "max_seq_len": 1024,
+        "attention_async_offload": false,
+        "use_fused_rmsnorm": true,
+        "add_control_adapter": true,
+        "in_dim_control_adapter": 24
+    },
+    "patch": {
+        "clip_grad_async": true,
+        "get_dist_model_load_from_pt": true
+    },
+    "encoder_offload_interval": 1,
+    "ae": {
+        "model_id": "wan_video_vae",
+        "from_pretrained": "../models/diffusers/vae",
+        "dtype": "bf16",
+        "enable_tiling": false,
+        "tiling_param": {
+            "tile_sample_min_height": 256,
+            "tile_sample_min_width": 256,
+            "tile_sample_stride_height": 192,
+            "tile_sample_stride_width": 192
+        },
+        "norm_latents": true,
+        "norm_mode": "channel_specified_shift_scale",
+        "do_sample": false,
+        "i2v_processor": {
+            "processor_id": "wan_i2v_processor",
+            "i2v_vae_encod_tiling": false
+        }
+    },
+    "text_encoder": {
+        "model_id": "UMT5",
+        "dtype": "bf16",
+        "hub_backend": "hf",
+        "from_pretrained": "../models/diffusers/text_encoder"
+    }
+}

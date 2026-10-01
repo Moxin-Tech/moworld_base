@@ -1,0 +1,8 @@
+{
+    "sorafeature": {
+        "save_path": "./examples/moworld/local_data/feature_extraction"
+    },
+    "profile": {
+        "enable": false
+    }
+}

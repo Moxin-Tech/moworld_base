@@ -1,0 +1,117 @@
+{
+  "mindspeed_mm": {
+    "description": "Parameters from mindspeed_mm repository",
+    "params": [
+      "load_base_model",
+      "mm_data",
+      "mm_tool",
+      "mm_model"
+    ]
+  },
+  "mindspeed": {
+    "description": "Parameters from mindspeed repository",
+    "params": [
+      "auto_tuning_work_dir",
+      "profile_save_path",
+      "tokenizer_name_or_path",
+      "additional_config",
+      "layerzero_config",
+      "prof_file"
+    ]
+  },
+  "megatron": [
+    {
+      "description": "Parameters from megatron repository",
+      "params": [
+        "tensorboard_dir",
+        "save",
+        "load",
+        "pretrained_checkpoint",
+        "data_cache_path",
+        "merge_file",
+        "s3_cache_path",
+        "ict_load",
+        "bert_load",
+        "titles_data_path",
+        "evidence_data_path",
+        "block_data_path",
+        "embedding_path",
+        "yaml_cfg"
+      ]
+    },
+    {
+      "description": "Special parameters from megatron",
+      "params": [
+        "data_path",
+        "train_data_path",
+        "valid_data_path",
+        "test_data_path"
+      ]
+    }
+  ],
+  "mm_data": {
+    "description": "Parameters from mm_data.json",
+    "params": [
+      "dataset_param.basic_parameters.data_path",
+      "dataset_param.basic_parameters.data_folder",
+      "dataset_param.basic_parameters.dataset_dir",
+      "dataset_param.basic_parameters.dataset",
+      "dataset_param.basic_parameters.cache_dir",
+      "dataset_param.tokenizer_config.from_pretrained",
+      "dataset_param.tokenizer_config.template_file_path",
+      "dataset_param.processor_path",
+      "dataset_param.preprocess_parameters.model_name_or_path",
+      "dataset_param.preprocess_parameters.processor_name_or_path",
+      "dataset_param.video_folder",
+      "dataloader_param.collate_param.processor_name_or_path"
+    ]
+  },
+  "mm_model": {
+    "description": "Parameters from mm_model.json",
+    "params": [
+      "text_encoder.from_pretrained",
+      "text_encoder.template_file_path",
+      "text_encoder.ckpt_path",
+      "image_encoder.vision_encoder.ckpt_path",
+      "image_encoder.vision_projector.ckpt_path",
+      "ae.from_pretrained",
+      "ae.from_pretrained_3dvae_ckpt",
+      "as.i2v_processor.processor_path",
+      "ae.i2v_processor.image_encoder",
+      "dpo.histogram_path",
+      "tokenizer.from_pretrained",
+      "tokenizer.template_file_path",
+      "predictor.from_pretrained",
+      "discriminator.perceptual_from_pretrained",
+      "save_path",
+      "prompt",
+      "video",
+      "image",
+      "image_path",
+      "file_path",
+      "image_processer_path",
+      "from_pretrained",
+      "conditional_pixel_values_path",
+      "ckpt_path",
+      "eval_config.dataset.basic_parm.data_path",
+      "eval_config.dataset.basic_parm.data_folder",
+      "eval_config.dataset.extra_param.prompt_file",
+      "eval_config.dataset.extra_param.augmented_prompt_file",
+      "eval_config.eval_result_path",
+      "eval_config.image_path",
+      "eval_config.long_eval_config",
+      "result_output_path",
+      "dataset_path",
+      "evaluation_dataset"
+    ]
+  },
+  "mm_tool": {
+    "description": "Parameters from mm_tool.json",
+    "params": [
+      "profile.static_param.save_path",
+      "profile.static_param.dynamic_param",
+      "memory_profile.save_path",
+      "sorafeature.save_path"
+    ]
+  }
+}

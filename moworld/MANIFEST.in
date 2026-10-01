@@ -1,0 +1,3 @@
+include *
+recursive-include mindspeed_mm *
+recursive-include examples *

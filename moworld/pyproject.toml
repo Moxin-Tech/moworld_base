@@ -3,8 +3,7 @@ name = "mindspeed-mm"
 version = "0.1"
 requires-python = ">=3.10"
 description = "MindSpeed MM is designed to provide end-to-end large multi-modal model solutions for Huawei's Ascend chips, including models, algorithms, and downstream tasks."
-readme = "README.md"
-license = {file = "LICENSE"}
+license = {file = "licenses/MindSpeed-MM.txt"}
 authors = [
   { name = "The MindSpeed MM Team" },
 ]

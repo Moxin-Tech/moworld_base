@@ -1,4 +1,3 @@
 include *
 recursive-include mindspeed_mm *
 recursive-include examples *
-include licenses/MindSpeed-MM.txt
